@@ -1,0 +1,31 @@
+Code#1:
+rooms = {
+    'CS101':'3004',
+    'CS102':'4501',
+    'CS103':'6755',
+    'NT110':'1244',
+    'CM241':'1411'
+    }
+instructors = {
+    'CS101':'Haynes',
+    'CS102':'Alvarado',
+    'CS103':'Rich',
+    'NT110':'Bruke',
+    'CM241':'Lee'
+    }
+meeting_times = {
+    'CS101':'8:00 am',
+    'CS102':'9:00 am',
+    'CS103':'10:00 am',
+    'NT110':'11:00 am',
+    'CM241':'1:00 pm'
+    }
+course_number = input("Enter a Course Number: ")
+if course_number in rooms and course_number in instructors and course_number in meeting_times:
+    print(f"Course Number: {course_number}")
+    print(f"Room Number: {rooms[course_number]}")
+    print(f"Instructors: {instructors[course_number]}")
+    print(f"Meeting Time: {meeting_times[course_number]}")
+else:
+    print("Invalid Course Number Entered. Please Try Again")
+    
