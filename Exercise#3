@@ -1,0 +1,18 @@
+code#3:
+def encrypt_file(input_file, output_file):
+    code_dict = {
+        'A':'%', 'a':'9', 'B':'@', 'b':'#', 'C':'&', 'c':'*', 'D':'!', 'd':'(', 'E':'$', 'e':'^'
+        }
+    with open(input_file, 'r', encoding = 'utf-8') as infile, open(output_file, 'w', encoding = 'utf-8') as outfile:
+        for line in infile:
+            encrypted_line = ''.join(codes.get(char,char) for char in line)
+            outfile.write(encrypted_line)
+
+def decrypt_file(input_file):
+    reverse_codes = {
+        '%':'A', '9':'a', '@':'B', '#':'b', '&':'C', '*':'c', '!':'D', '(':'d', '$':'E', '^':'e'
+        }
+    with open(input_file,'r', encoding = 'utf-8') as infile:
+        for linr in infile:
+            decrypted_line = ''.join(reverse_codes.get(char, char) for char in line)
+            print(decrypted_line)
