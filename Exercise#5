@@ -1,0 +1,23 @@
+code#5:
+def word_frequency(input_file, output_file = None):
+    word_count = {}
+    with open(input_file, 'r', encoding = 'utf-8') as infile:
+        for line in infile:
+            words = line.split()
+            for word in words:
+                cleaned_word = word.lower().strip('.,!?";:()[]{}')
+                if cleaned_word:
+                    if cleaned_word in word_count:
+                        word_count[cleaned_word] += 1
+                    else:
+                        word_count[cleaned_word] = 1
+    if output_file:
+        with open(output_file,'w', encoding = 'utf-8') as outfile:
+            for word, count in word_count.items():
+                outfile.write(f'{word}:{count}\n')
+        print(f'Word frequencies have been written to {output_file}.')
+    else:
+        print("Word frequencies:")
+        for word, count in word_count.items():
+            print(f'{word}:{count}')
+word_frequency('input.txt','word_frequencies.txt')
