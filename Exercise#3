@@ -1,12 +1,14 @@
 code#3:
 def encrypt_file(input_file, output_file):
-    code_dict = {
+    codes = {
         'A':'%', 'a':'9', 'B':'@', 'b':'#', 'C':'&', 'c':'*', 'D':'!', 'd':'(', 'E':'$', 'e':'^'
         }
     with open(input_file, 'r', encoding = 'utf-8') as infile, open(output_file, 'w', encoding = 'utf-8') as outfile:
         for line in infile:
             encrypted_line = ''.join(codes.get(char,char) for char in line)
             outfile.write(encrypted_line)
+
+encrypt_file('input.txt', 'encrypted.txt')
 
 def decrypt_file(input_file):
     reverse_codes = {
@@ -16,3 +18,5 @@ def decrypt_file(input_file):
         for linr in infile:
             decrypted_line = ''.join(reverse_codes.get(char, char) for char in line)
             print(decrypted_line)
+decrypt_file('encrypted.txt')
+
