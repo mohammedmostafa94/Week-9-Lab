@@ -1,0 +1,35 @@
+code#6:
+def file_analysis(file1, file2):
+    def get_unique_words(file):
+        with open(file, 'r', encoding = 'utf-8') as infile:
+            words = set()
+            for line in infile:
+                line_words = line.split()
+                for word in line_words:
+                    cleaned_word = word.lower().strip('.,!?";:(){}[]')
+                    if cleaned_word:
+                        words.add(cleaned_word)
+        return words
+    unique_words_file1 = get_unique_words(file1)
+    unique_words_file2 = get_unique_words(file2)
+
+    all_unique_words = unique_words_file1.union(unique_words_file2)
+    print('Unique words in both files:')
+    print(all_unique_words)
+
+    common_words = unique_words_file1.intersection(unique_words_file2)
+    print('\nWords that appear in both files:')
+    print(common_words)
+
+    unique_to_file1 = unique_words_file1.difference(unique_words_file2)
+    print('\nWords that appears in first file but not in second file:')
+    print(unique_to_file1)
+
+    unique_to_file2 = unique_words_file2.difference(unique_words_file1)
+    print('\nWords that appears in second file but not in first file:')
+    print(unique_to_file2)
+
+    either_but_not_both = unique_to_file1.symmetric_difference(unique_to_file2)
+    print('\nWords that appear either file but not in both:')
+    print(either_but_not_both)
+file_analysis('file1.txt', 'file2.txt')
