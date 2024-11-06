@@ -1,0 +1,12 @@
+code#4:
+def unique_words_from_file(input_file):
+    unique_words = set()
+    with open(input_file, 'r', encoding = 'utf-8') as infile:
+        for line in infile:
+            words = line.split()
+            unique_words.update(words)
+    unique_words_list = sorted(unique_words)
+    print("Unique words found in the file:")
+    for word in unique_words_list:
+        print(word)
+unique_words_from_file('input.txt')
